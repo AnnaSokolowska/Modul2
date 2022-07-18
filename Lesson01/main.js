@@ -24,6 +24,7 @@ const div = document.querySelectorAll('.content');
 
 propsList[4].replaceWith(propsList[2]);
 h2[1].remove();
+
 const newTitle = document.createElement('h2');
 const titleText = document.createTextNode('This  и прототипы объектов');
 const perenos = document.createElement('br');
