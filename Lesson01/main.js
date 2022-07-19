@@ -35,4 +35,6 @@ div[2].append(perenos);
 div[2].append(propsList[4]);
 div[1].append(listItemSec[8]);
 div[1].append(listItemSec[9]);
+const adds = document.querySelector('.ads');
+adds.remove();
 
