@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 (() => {
   const list = document.querySelector('.list');
   let listItemText;
