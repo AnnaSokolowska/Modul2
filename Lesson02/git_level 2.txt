@@ -1,0 +1,90 @@
+git checkout -b 'dev' создание новой ветки
+соединить ветки
+git checkout main - переход в основную ветку
+git merge dev - перенос из dev в ветку main
+git push
+git branch -d dev  удалить ветку на компе
+git push -d origin dev - удалить из удаленного репозитория
+
+
+dom.nextSibling = ноду след элемента
+dom.nextElementSibling =  след элемент выводит
+
+dom.previousSibling =  ноду предыдущего элемента
+dom.peviousElementSibling =  предыдущий элемент
+
+dom.firstChild
+dom.firstElementChild первый ребенок
+
+dom.parentElement
+dom.parentNode
+
+dom.closest('.item-front')
+
+
+class
+dom.classList все классы
+dom.classList[0]обращение по индексу
+dom.classList.add('green') через запятую можно добавить несколько классов
+dom.classLisr.remove('') удаляет
+dom.classList.toggle('') удаляет или добавляет класс в зависимости есть или нет он
+dom.classList.contains('') возвращает true /false есть или нет этот класс
+
+dom.matches('[title]')  есть или нет
+
+Аттрибуты
+
+dom.className класс
+dom.title
+logo.src
+logo.alt
+можно присвоить
+logo.alt = 'Methed logo'
+
+link.hasAttribute('href') есть или нет аттрибут
+link.getAttribute('href')  получить этот аттрибут
+link.href = 'https://google.com' задали аттрибут
+link.setAttribute('href', 'https://yahoo.com')  тоже установит значение этого аттрибута
+link.removeAttribute('href')  удалить аттрибут
+lina.attributes  все атрибуты получить
+
+
+data attribute
+const ajax = document.querySelector('.ajax');
+Если есть атрибут data-text, то можно достать то, что там записано
+const test = ajax.dataset.text
+вписать значение в элемент 
+(testText = document.createTextNode(test);
+ajax.append(text);)  вместо этого можно просто сделать 
+ajax.textConten += test
+
+
+dom.innerHTML полностью верстка // использовать не рекомендуется
+dom.outerHTML  с классом с тегом //использовать не рекомендуется
+
+
+title.insertAdjacentHTML('beforebegin', '<i></i>')
+title.insertAdjacentHTML('afterbegin', '<i></i>')
+title.insertAdjacentHTML('beforeend', '<i></i>')
+title.insertAdjacentHTML('afterend', '<i></i>')
+title.textContent = '' cтереть что было
+ 
+если просто текст вставить то 
+insertAdjacentText 
+ тут должен быть создан элемент до того как или он уже где-то есть
+
+
+.style.fontSize  = '' отдельные свойства
+.style.cssText = '
+тут перечисление всех свойств
+
+';
+
+const styled = getComputedStyle(front);
+ только для чтения
+
+front.getBoundingClientRect()
+
+
+
+
