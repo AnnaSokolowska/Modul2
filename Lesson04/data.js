@@ -1,3 +1,4 @@
+'use strict';
 const data = [
   {
     name: 'Иван',
@@ -20,3 +21,4 @@ const data = [
     phone: '+79876543210',
   },
 ];
+
