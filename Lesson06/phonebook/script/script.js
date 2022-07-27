@@ -83,13 +83,14 @@ const data = [
     thead.insertAdjacentHTML('beforeend', `
     <tr>
       <th class = "delete"> Удалить</th>
-      <th>Имя</th>
-      <th>Фамилия</th>
+      <th class = "th__name">Имя</th>
+      <th class = "th__surname">Фамилия</th>
       <th>Телефон</th>
       <th></th>
     </tr>`);
 
     const tbody = document.createElement('tbody');
+    table.setAttribute('id', 'table');
     table.append(thead, tbody);
     table.tbody = tbody;
 
@@ -187,6 +188,42 @@ const data = [
     footer.footerContainer.append(footerRights);
     app.append(header, main, footer);
 
+
+    const list = table.tbody;
+    const rows = list.children;
+
+    const sortColumn = function(index) {
+      // Клонируем все строки
+
+      const newRows = Array.from(rows);
+      newRows.sort((rowA, rowB) => {
+        const cellA = rowA.querySelectorAll('td')[index].innerHTML;
+        console.log(cellA);
+        const cellB = rowB.querySelectorAll('td')[index].innerHTML;
+        switch (true) {
+          case (cellA > cellB):
+            return 1;
+          case cellA < cellB:
+            return -1;
+          case cellA === cellB:
+            return 0;
+        }
+      });
+      [].forEach.call(rows, (row) => {
+        list.removeChild(row);
+      });
+      newRows.forEach((newRow) => {
+        list.appendChild(newRow);
+      });
+    };
+    const headers = table.querySelectorAll('th');
+    [].forEach.call(headers, (header, index) => {
+      header.addEventListener('click', () => {
+        sortColumn(index);
+      });
+    });
+
+
     return {
       list: table.tbody,
       logo,
@@ -252,7 +289,6 @@ const data = [
       logo,
       btnAdd,
       formOverlay,
-      form,
       btnDel} = phoneBook;
 
     // функционал
@@ -283,6 +319,7 @@ const data = [
       }
     });
   };
+
   window.phoneBookInit = init;
 }
 
