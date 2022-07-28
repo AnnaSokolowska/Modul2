@@ -1,0 +1,71 @@
+const form = document.querySelector('.my-form');
+ form.addEventListener('submit', e => {
+e.preventDefault(); // убрать стандартное поведение и отсылка данных формы сразу же
+
+console.log(form.elements.name.value); // взять данные из поля name
+console.log(form.elements.surname.value);взять данные из поля surname
+
+// можно сразу же обращаться form.name.value
+
+ const formData = new FormData(e.target);// можно получить значение любого элемента из формы
+ console.log(formData.get('mail'));
+console.log([...formData.entries()]);  // все что итерируется можно перебирать этим медотом, выдает массив с массивами
+ можно заменить таким способом 
+console.log(Objekt.fromEntries(formData));
+вывод объект если несколько чекбоксов, то запись будет только один чекбокс
+});
+  извлечение элементов из формы
+form.name.addEventListener('focus', e => {
+console.log(e.target.value); когда наведена мышка
+});
+
+form.name.addEventListener('blur', e => {
+console.log(e.target.value); убрали фокус с формы и размытие
+});
+
+form.name.addEventListener('change', e => {
+console.log(e.target.value); сработает когда изменяется поле ввода
+});
+
+
+form.name.addEventListener('input', e => {
+console.log(e.target.value); ввод данных
+});
+
+form.name.addEventListener('keyup', e => {
+console.log(e.target.value); отжать клавишу
+});
+
+form.name.addEventListener('keydown', e => {
+console.log(e.target.value); нажатие клавиши
+});
+form.name.addEventListener('keypress', e => {
+console.log(e.target.value); нажатие клавиши
+});
+
+
+деструтруризация формы
+                                       color: [...color] получим объект  
+const {name, size, file, description, color} = form;
+console.log(name, size, file, description, color) получим все элементы 
+
+делегирование прямо на форме
+const = fieldsetRadio = document.querySelector('.fieldset-radio');
+
+fieldsetRadio.addEventListener('change', e => {
+console.log(e.target);  меняет цвет в value
+});
+можно повесить на форму обработчик событий 
+ form.addEventListener('change', e => {
+console.log(e.target.value);   выводит в консоль все что вводится
+});
+
+document.addEventListener('keydown', e=> {
+console.log(e.code); будут выводится какие клавиши нажимаются
+});
+document.addEventListener('keydown', e=> {
+if (e.code === ''Escape) {
+form.reset(); // при нажатии на escape  вся форма сбрасывается
+}
+});
+
