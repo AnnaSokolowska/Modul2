@@ -1,38 +1,6 @@
 'use strict';
 
 {
-  const data = JSON.parse(localStorage.getItem('contacts'));
-  console.log(data);
-  const getStorage = (newContact) => {
-    console.log(newContact.phone);
-    data.forEach(item => {
-      if (item.phone === newContact.phone) {
-        alert('Контакт с таким номером телефона уже записан');
-        return data;
-      } else return [];
-    });
-  };
-
-  const setStorage = (newContact, Object) => {
-    getStorage(newContact);
-    console.log(getStorage(newContact));
-    data.push(newContact);
-    localStorage.setItem('contacts', JSON.stringify(data));
-  };
-
-  const removeStorage = (tel) => {
-    const telef = tel.substring(1);
-    data.forEach(item => {
-      if (item.phone === telef) {
-        const delIndex = data.indexOf(item);
-
-        data.splice(delIndex, 1);
-      }
-      localStorage.removeItem('data');
-      localStorage.setItem('contacts', JSON.stringify(data));
-    });
-  };
-
   const createContainer = () => {
     const container = document.createElement('div');
     container.classList.add('container');
@@ -235,6 +203,7 @@
   };
 
   const renderContacts = (elem, data) => {
+    console.log(data);
     const allRow = data.map(createRow);
     elem.append(...allRow);
     return allRow;
@@ -270,6 +239,32 @@
     return {
       closeModal,
     };
+  };
+
+  const getStorage = (key) => {
+    const dataBase = localStorage.getItem(`${key}`);
+    if (dataBase === null) {
+      return JSON.stringify([]);
+    } else return dataBase;
+  };
+
+  const setStorage = (newContact, Object) => {
+    const data = JSON.parse(getStorage('contacts'));
+    data.push(newContact);
+    console.log(data);
+    localStorage.setItem('contacts', JSON.stringify(data));
+  };
+
+  const removeStorage = (tel) => {
+    const telef = tel.substring(1);
+    const data = JSON.parse(getStorage('contacts'));
+    data.forEach(item => {
+      if (item.phone === telef) {
+        const delIndex = data.indexOf(item);
+        data.splice(delIndex, 1);
+      }
+      localStorage.setItem('contacts', JSON.stringify(data));
+    });
   };
 
   const deleteControl = (btnDel, list) => {
@@ -312,6 +307,7 @@
       btnDel} = renderPhoneBook(app, title);
 
     // функционал
+    const data = JSON.parse(getStorage('contacts'));
     const allRow = renderContacts(list, data);
     const {closeModal} = modalControl(btnAdd, formOverlay);
     hoverRow(allRow, logo);
