@@ -1,7 +1,9 @@
-import * as serviceStorage from './modules/serviceStorage.js';
-import {createRow, renderPhoneBook, renderContacts} from './modules/render.js';
-import hoverRow from './modules/modalControls.js';
+import * as serviceStorage from './scripts/serviceStorage';
+import {createRow, renderPhoneBook, renderContacts} from './scripts/render';
+import hoverRow from './scripts/modalControls';
+import './index2.html';
 
+import './scss/index.scss';
 
 {
   const {getStorage, setStorage, removeStorage} = serviceStorage;

@@ -1,4 +1,9 @@
-
+import image from '../img/icon.svg';
+const createImagelogo = () => {
+  const img = document.createElement('img');
+  img.src = image;
+  return img;
+};
 
 const createContainer = () => {
   const container = document.createElement('div');
@@ -165,6 +170,7 @@ export const createRow = ({name: firstName, surname, phone}) => {
 
 export const renderPhoneBook = (app, title) => {
   const header = createHeader();
+  const imageLogo = createImagelogo();
   const logo = createLogo(title);
   const main = createMain();
   const buttonGroup = createButtonsGroup([
@@ -184,7 +190,7 @@ export const renderPhoneBook = (app, title) => {
   const footer = createFooter();
   const footerRights = createFotterRights(title);
 
-  header.headerContainer.append(logo);
+  header.headerContainer.append(imageLogo, logo);
   main.mainContainer.append(buttonGroup.btnWrapper, table,
     overlay);
   footer.footerContainer.append(footerRights);
